@@ -1,21 +1,18 @@
 apply plugin: "java"
 apply plugin: "distribution"
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-	
-group = "com.github.unafraid.gradle-multiproject"
-version = "1.0.0"
+sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 tasks.withType(JavaCompile) {
-	options.encoding = "UTF-8"
+    options.encoding = "UTF-8"
 }
 
 dependencies {
-    compile(group: "org.telegram", name: "telegrambots", version: "3.6")
+    // Add your dependencies here
     testCompile(group: "junit", name:"junit", version:"4.12")
 }
 
@@ -23,7 +20,8 @@ jar {
     manifest {
         attributes(
             "Built-By": System.getProperty("user.name"),
-            "Main-Class": "com.github.unafraid.gradle.multiproject.Main",
+            // Update with your main class example below:
+            // "Main-Class": "com.github.unafraid.gradle.single.Main",
             "Class-Path": configurations.runtime.collect({ "lib/" + it.getName() }).join(" ")
         )
     }
@@ -40,9 +38,4 @@ distributions {
             duplicatesStrategy = DuplicatesStrategy.EXCLUDE
         }
     }
-}
-
-
-task wrapper(type: Wrapper) {
-	gradleVersion = "4.6"
 }

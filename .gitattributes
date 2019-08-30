@@ -9,3 +9,8 @@
 
 # SH files must always use LF.
 *.sh eol=lf
+# Gradle Wrapper
+gradlew=lf
+
+# Docker
+Dockerfile=lf
